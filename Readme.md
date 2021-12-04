@@ -4,6 +4,7 @@
 
 ![Screenshot App](/img/readme.png)
 
+
 Fitur:
  - Menghitung Jumlah Huruf (dengan huruf berulang)
  - Menghitung Jumlah Karakter/String
