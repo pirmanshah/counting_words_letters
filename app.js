@@ -42,12 +42,11 @@ const remove = () => {
 }
 
 const  hitungHurufBerulang = (param) => {
-    let letters = hapusSpasi(param).toLowerCase();
+    let letters = hapusSpasi(param).toLowerCase().replace(/[^a-zA-Z ]/g, "");
     let sum = '';
     let letterMap = {};
 
     const iterable = [...letters].forEach((value, index) => {
-        console.log(index)
         let currentLetterCount = letterMap[letters[index]];
         let count = currentLetterCount ? currentLetterCount : 0;
         letterMap[letters[index]] = count + 1;
@@ -64,7 +63,7 @@ const hitungKarakterString = (param) => {
 }
 
 const hurufTidakBerulang = (param) => {
-    let temp = hapusSpasi(param).toLowerCase();
+    let temp = hapusSpasi(param).toLowerCase().replace(/[^a-zA-Z ]/g, "");
     let arr = [];
     const count = [...temp].forEach(value => {
         if(!arr.includes(value)) {
@@ -75,7 +74,7 @@ const hurufTidakBerulang = (param) => {
 }
 
 const  hitungKataBerulang = (param) => {
-  let words = param.value.toLowerCase().split(" ");
+  let words = param.value.toLowerCase().replace(/[^a-zA-Z ]/g, " ").split(" ");
   let sum = '';
   let wordMap = {};
 
@@ -85,20 +84,18 @@ const  hitungKataBerulang = (param) => {
     wordMap[words[i]] = count + 1;
   }
   let result = Object.keys(wordMap).map((key) => {
-    sum += `<li>${key} = ${wordMap[key]}</li>`
+    if(key != '') {
+        sum += `<li>${key} = ${wordMap[key]}</li>`;
+    }
   });
   jumlah_kata_berulang.innerHTML = sum;
 }
 
 const hitungKata = (param) => {
     let countWord = 0;
-    let length = param.value.length;
-    for (let i = 0; i < length; i++) {
-        let currentCharacter = param.value[i];
-        if (currentCharacter === " ") {
-            countWord += 1;
-        }
-    }
-    countWord += 1;
+    let words = param.value.replace(/[^a-zA-Z ]/g, "").split(" ");
+    words.forEach(word => {
+        countWord = word ? countWord += 1 : countWord;
+    });
     jumlah_kata.innerHTML = countWord;
 }
