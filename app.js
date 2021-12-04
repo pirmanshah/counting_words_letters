@@ -73,8 +73,8 @@ const hurufTidakBerulang = (param) => {
     huruf_tidak_berulang.innerHTML = arr.length;
 }
 
-const  hitungKataBerulang = (param) => {
-  let words = param.value.toLowerCase().replace(/[^a-zA-Z ]/g, " ").split(" ");
+const hitungKataBerulang = (param) => {
+  let words = param.value.toLowerCase().replace(/[^A-Z0-9]/ig, " ").split(" ");
   let sum = '';
   let wordMap = {};
 
